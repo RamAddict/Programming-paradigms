@@ -1,0 +1,7 @@
+6
+Kratos 70 12 2
+Goku 20 0 3
+Kauririn 70 12 4
+Saitama 70 12 1
+Hulk 30 0 0
+Yamcha 10 0 0

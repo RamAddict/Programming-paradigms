@@ -1,0 +1,46 @@
+genitor(pam, bob).
+genitor(tom, bob).
+genitor(tom, liz).
+
+genitor(bob, ana).
+genitor(bob, pat).
+
+genitor(liz,bill).
+
+genitor(pat, jim).
+
+mulher(pam).
+mulher(liz).
+mulher(pat).
+mulher(ana).
+homem(tom).
+homem(bob).
+homem(jim).
+homem(bill).
+
+conhece(tom, jim).
+conhece(jim, bob).
+
+conhece(X,Y):- conhece(Y,X).
+conhece(X,Z):- conhece(X,Y), conhece(Y,Z).
+
+pai(X,Y) :- genitor(X,Y), homem(X).
+mae(X,Y) :- genitor(X,Y), mulher(X).
+
+avo(AvoX, X) :- genitor(GenitorX, X), genitor(AvoX, GenitorX), homem(AvoX).
+avoh(AvohX, X) :- genitor(GenitorX, X), genitor(AvohX, GenitorX), mulher(AvohX).
+irmao(X,Y) :- genitor(PaiAmbos, X), genitor(PaiAmbos, Y), X \== Y, homem(X).
+irma(X,Y) :- genitor(PaiAmbos, X), genitor(PaiAmbos, Y), X \== Y, mulher(X).
+irmaos(X,Y) :- (irmao(X,Y); irma(X,Y)), X \== Y.
+tio(X, Y) :- genitor(Z, Y) , irmaos(X, Z), homem(X).
+tia(X, Y) :- genitor(Z, Y) , irmaos(X, Z), mulher(X).
+primo(X, Y) :- genitor(G, X), genitor(H, Y), irmaos(G, H), homem(X).
+prima(X, Y) :- genitor(G, X), genitor(H, Y), irmaos(G, H), mulher(X).
+primos(X, Y) :- (primo(X, Y) ; prima(X, Y)), X \== Y.
+bisavo(X, Y) :- (avo(A, Y) ; avoh(A, Y)), pai(X, A).
+bisavoh(X, Y) :- (avo(A, Y) ; avoh(A, Y)), mae(X, A).
+
+
+ascendente(X,Y) :- genitor(X,Y). %recursão - caso base
+ascendente(X,Y) :- genitor(X, Z), ascendente(Z, Y). %recursão - passo recursivo
+

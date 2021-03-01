@@ -1,0 +1,25 @@
+1. A. ​ Classes primitivas em Haskell são aquelas que não herdam características de
+nenhuma e são a base para a construção de outras. Já as classes secundárias são
+aquelas que herdam alguma outra classe.
+Exemplos de classes primitivas são: ​ Bounded​ , ​ Eq​ , ​ Enum​ .
+Bounded​ é uma classe que estabelece limites mínimos e máximos e que instancia
+os tipos Int, Char, Bool, (), Ordering e tuples. Ela possui entre seus métodos o
+método ​ minBound​ que delimita um mínimo.
+Eq​ que trata os métodos de igualdade e desigualdade e instancia todos os tipos,
+com exceções dos tipos IO e funções. Ela possui entre seus métodos o método ​ (==)
+que verifica se dois elementos são iguais.
+Enum​ que trata a enumerabilidade, ou seja, define os métodos de operações sobres
+tipos sequencialmente ordenados instanciando os tipos (), Bool, Char, Int, Integer,
+Ordering, Float e Double. Ela possui entre seus métodos o método ​ succ​ que
+retorna um elemento sucessor ao passado.
+Exemplos de classes secundárias são: ​ Ord​ , ​ Num​ .
+Ord​ define métodos para tipos de dados totalmente ordenados, instanciando todos
+os tipos, exceto funções, IO e IOError. Ela possui entre seus métodos o método
+compare​ que compara a igualdade e diferença (maior que, menor que) entre
+elementos.
+Num​ define os métodos para operações com números e instancia os tipos Int,
+Integer, Float e Double. Ela possui entre seus métodos o método ​ negate​ que retorna
+o valor com sinal trocado do elemento.
+B.​ Classes numéricas em Haskell são como ​ Real​ que estende ​ Num ​ e ​ Ord​ , assim
+como a classe ​ Integral​ que estende ​ Real ​ e ​ Enum​ e assim por diante, existindo uma
+variedade de classes numéricas.
